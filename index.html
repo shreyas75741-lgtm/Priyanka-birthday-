@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate Proposal ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(to right,#ff9a9e,#fecfef);
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+.container{padding:40px 20px;}
+
+img{
+  width:230px;height:230px;
+  border-radius:20px;
+  margin-top:20px;
+  box-shadow:0 0 25px white;
+}
+
+.btn{
+  margin:10px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4b7d;
+  cursor:pointer;
+  font-size:1em;
+}
+
+#result{
+  display:none;
+  font-size:1.5em;
+  margin-top:20px;
+}
+
+/* floating hearts */
+.heart{
+  position:absolute;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-100vh);opacity:0;}
+}
+
+/* confetti */
+.confetti{
+  position:fixed;
+  width:10px;height:10px;
+  animation:fall 3s linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh);}
+  100%{transform:translateY(100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Happy Birthday Priyanka 🎂</h1>
+<h3>From Shreyas ❤️</h3>
+
+<img src="photo.jpg" alt="Our Memory">
+
+<p id="text"></p>
+
+<h2>Will you stay with me forever? 💍</h2>
+
+<button class="btn" onclick="yes()">YES ❤️</button>
+<button class="btn" onclick="no()">NO 😢</button>
+
+<div id="result"></div>
+
+<audio src="song.mp3" autoplay loop></audio>
+
+</div>
+
+<script>
+
+// typing message
+const msg = "Priyanka... from the moment you came into my life, everything became beautiful. You are my happiness, my peace, and my forever ❤️";
+let i=0;
+
+function type(){
+  if(i < msg.length){
+    document.getElementById("text").innerHTML += msg.charAt(i);
+    i++;
+    setTimeout(type,40);
+  }
+}
+type();
+
+// YES button
+function yes(){
+  document.getElementById("result").style.display="block";
+  document.getElementById("result").innerHTML="🎉 You said YES! ❤️ Forever together 💖";
+
+  for(let i=0;i<100;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.backgroundColor=["#ff4b7d","#ffffff","#ffd1dc"][Math.floor(Math.random()*3)];
+    document.body.appendChild(c);
+  }
+}
+
+// NO button
+function no(){
+  alert("NO is not an option 😤❤️");
+}
+
+// floating hearts
+function heart(){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(20+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,300);
+
+</script>
+
+</body>
+</html>
